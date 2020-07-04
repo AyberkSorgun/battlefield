@@ -1,6 +1,5 @@
 from random import random
 
-
 class Board:
 
     instance = None
@@ -16,7 +15,7 @@ class Board:
         else:
             Board.instance = self
 
-    def initialize_board(self, size):
+    def setup_board(self, size):
         """
         :param size: length of one side of the game board
         :return: a game board with size of (size x size)
@@ -24,17 +23,24 @@ class Board:
 
         print([["O" for i in range(size)] for j in range(size)])
 
-    def update_board(self, board, coordinate_x, coordinate_y):
+    def add_ship(self,Ship: ship):
+
+
+
+        return True
+
+    def update_board(self, coordinate_x, coordinate_y):
 
         #missing the target
-        if board[coordinate_x][coordinate_y] == "O":
-            board[coordinate_x][coordinate_y] = "o"
+        if Board.get_instance()[coordinate_x][coordinate_y] == "O":
+            Board.get_instance()[coordinate_x][coordinate_y] = "o"
+            print("It's a miss")
 
         #hitting the target
-        elif board[coordinate_x][coordinate_y] == "X":
-            board[coordinate_x][coordinate_y] = "x"
+        elif Board.get_instance()[coordinate_x][coordinate_y] == "X":
+            Board.get_instance()[coordinate_x][coordinate_y] = "x"
+            print("It's a hit!")
 
-        return board
 
     def print_board(self,board):
         """
@@ -44,6 +50,7 @@ class Board:
         for rows in board:
             print(rows)
 
+
 class GamePlay:
 
     def shoot(self, coordinate: str):
@@ -52,9 +59,7 @@ class GamePlay:
         x_axis = coordinate[0]
         y_axis = int(coordinate[1])
 
-
-
-
+        Board.update_board(x_axis, y_axis)
 
 
 class Ship:
@@ -64,16 +69,13 @@ class Ship:
     def is_down(self):
         1
 
-    def create_ship(self):
 
-        direction = random.randint(1, 2)
+class Player:
 
+    is_lost = False
+    number_of_ships: int
 
-    def add_ship(self,ship,board: Board):
-        #board.
-
-        1
-
-
+    if number_of_ships == 0:
+        is_lost = True
 
 
