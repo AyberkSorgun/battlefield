@@ -47,7 +47,11 @@ class Ships:
 
     def create_ship(self):
 
-        direction = random.ranint(1,2)
+        direction = random.randint(1, 2)
+
+
+    def add_ship(self,ship,board):
+        1
 
 
 
