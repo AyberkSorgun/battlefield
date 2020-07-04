@@ -3,12 +3,26 @@ from random import random
 
 class Board:
 
+    instance = None
+
+    def get_instance(self):
+        if Board.instance is None:
+            Board()
+        return Board.instance
+
+    def __init__(self):
+        if Board.instance is not None:
+            raise Exception("There can only be one Board. This class is a singleton!")
+        else:
+            Board.instance = self
+
     def initialize_board(self, size):
         """
         :param size: length of one side of the game board
         :return: a game board with size of (size x size)
         """
-        return [["O" for i in range(size)] for j in range(size)]
+
+        print([["O" for i in range(size)] for j in range(size)])
 
     def update_board(self, board, coordinate_x, coordinate_y):
 
@@ -32,7 +46,7 @@ class Board:
 
 class GamePlay:
 
-    def shoot(self, coordinate):
+    def shoot(self, coordinate: str):
 
         # decomposing the coordinate into integers
         x_axis = coordinate[0]
@@ -43,14 +57,21 @@ class GamePlay:
 
 
 
-class Ships:
+class Ship:
+
+
+
+    def is_down(self):
+        1
 
     def create_ship(self):
 
         direction = random.randint(1, 2)
 
 
-    def add_ship(self,ship,board):
+    def add_ship(self,ship,board: Board):
+        #board.
+
         1
 
 
